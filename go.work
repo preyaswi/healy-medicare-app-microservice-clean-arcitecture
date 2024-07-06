@@ -1,0 +1,8 @@
+go 1.21.5
+use (
+    ./services/healy-apigateway
+    ./services/Patient-service
+    ./services/doctor-service
+    ./services/chat-service
+    ./services/admin-service
+)

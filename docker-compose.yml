@@ -1,0 +1,118 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: postgres
+    networks:
+      - healy_network
+    volumes:
+      - healy_postgres_volume:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+  mongodb:
+    image: mongo:6.0
+    container_name: healy-mongodb
+    restart: on-failure
+    networks:
+      - healy_network
+    volumes:
+      - healy_mongo_volume:/data/db
+    ports:
+      - "27017:27017"
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - healy_network
+    container_name: zookeeper
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: INTERNAL://0.0.0.0:9092,OUTSIDE://0.0.0.0:9094
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9092,OUTSIDE://localhost:9094
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+    networks:
+      - healy_network
+    container_name: kafka
+    depends_on:
+      - zookeeper
+
+  api-gateway:
+    image: preyaswi/api-gateway:latest
+    build:
+      context: ../healy-apigateway
+    restart: always
+    container_name: api-gateway
+    networks:
+      - healy_network
+    ports:
+      - "8000:8000"
+
+  patient-service:
+    image: preyaswi/patient-service:latest
+    build:
+      context: ../Patient-service
+    restart: always
+    depends_on:
+      - postgres
+    container_name: patient-service
+    networks:
+      - healy_network
+    hostname: patient-service
+
+  doctor-service:
+    image: preyaswi/doctor-service:latest
+    build:
+      context: ../doctor-service
+    restart: always
+    depends_on:
+      - postgres
+    container_name: doctor-service
+    networks:
+      - healy_network
+    hostname: doctor-service
+
+  chat-service:
+    image: preyaswi/chat-service:latest
+    build:
+      context: ../chat-service
+    depends_on:
+      - mongodb
+      - kafka
+    restart: always
+    container_name: chat-service
+    networks:
+      - healy_network
+    hostname: chat-service
+
+  admin-service:
+    image: preyaswi/admin-service:latest
+    build:
+      context: ../admin-service
+    depends_on:
+      - postgres
+    restart: always
+    container_name: admin-service
+    networks:
+      - healy_network
+    hostname: admin-service
+
+networks:
+  healy_network:
+    driver: bridge
+
+volumes:
+  healy_postgres_volume:
+  healy_mongo_volume:
