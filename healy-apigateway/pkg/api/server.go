@@ -6,6 +6,7 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/swagger"
 	"github.com/gofiber/template/html/v2"
@@ -22,6 +23,14 @@ func NewServerHTTP(patientHandler *handler.PatientHandler, doctorHandler *handle
 	})
 	route.Get("/swagger/*", swagger.HandlerDefault)
 	route.Use(logger.New())
+
+	route.Use(cors.New(cors.Config{
+        AllowOrigins: "*",
+        AllowMethods: "GET,POST,HEAD,PUT,DELETE,PATCH",
+        AllowHeaders: "Origin, Content-Type, Accept",
+    }))
+
+
 	DoctorRoutes(route, doctorHandler, patientHandler, bookingHandler)
 	PatientRoutes(route, patientHandler, doctorHandler, adminHandler, bookingHandler)
 	AdminRoutes(route, adminHandler, patientHandler, doctorHandler)

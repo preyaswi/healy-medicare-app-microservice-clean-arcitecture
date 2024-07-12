@@ -28,11 +28,6 @@ build:
     push: true
 manifests:
   rawYaml:
-    - ./k8s/stateless/*
-portForward:
-  - resourceType: service
-    resourceName: gateway-srv
-    port: 8888
-    localPort: 8888
+    - ./k8s/*
 deploy:
   kubectl: {}

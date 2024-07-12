@@ -26,9 +26,9 @@ func main() {
 	docs.SwaggerInfo.Title = "Healy Medicare API"
 	docs.SwaggerInfo.Description = "This is the API documentation for the Healy Medicare application."
 	docs.SwaggerInfo.Version = "1.0.0"
-	docs.SwaggerInfo.Host = "localhost:8000"
+    docs.SwaggerInfo.Host = "localhost:8000,test.local,preyaswi.online"
 	docs.SwaggerInfo.BasePath = "/"
-	docs.SwaggerInfo.Schemes = []string{"http"}
+	docs.SwaggerInfo.Schemes = []string{"http", "https"}
 	server, diErr := di.InitializeApi(cfg)
 	if diErr != nil {
 		log.Fatal("cannot start server: ", diErr)
