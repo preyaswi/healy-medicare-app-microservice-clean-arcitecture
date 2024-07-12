@@ -9,5 +9,5 @@ RUN go build -v -o /chat_svc/build/api ./cmd
 FROM gcr.io/distroless/static-debian11
 COPY --from=build-stage /chat_svc/build/api /
 COPY --from=build-stage /chat_svc/.env /
-EXPOSE 50055
+EXPOSE 8888
 CMD [ "/api" ]

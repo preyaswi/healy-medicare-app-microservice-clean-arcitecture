@@ -1,0 +1,38 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+build:
+  artifacts:
+    - image: preyaswi/patient-service
+      context: patient-service
+      docker:
+        dockerfile: Dockerfile
+    - image: preyaswi/doctor-service
+      context: doctor-service
+      docker:
+        dockerfile: Dockerfile
+    - image: preyaswi/chat-service
+      context: chat-service
+      docker:
+        dockerfile: Dockerfile
+    - image: preyaswi/admin-service
+      context: admin-service
+      docker:
+        dockerfile: Dockerfile
+    - image: preyaswi/gateway-service
+      context: healy-apigateway
+      docker:
+        dockerfile: Dockerfile
+  tagPolicy:
+    sha256: {}
+  local:
+    push: true
+manifests:
+  rawYaml:
+    - ./k8s/stateless/*
+portForward:
+  - resourceType: service
+    resourceName: gateway-srv
+    port: 8888
+    localPort: 8888
+deploy:
+  kubectl: {}

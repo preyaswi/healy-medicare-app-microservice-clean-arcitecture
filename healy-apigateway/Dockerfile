@@ -10,5 +10,5 @@ FROM gcr.io/distroless/static-debian11
 COPY --from=build-stage /healy/build/api /
 COPY --from=build-stage /healy/template/ /template/
 COPY --from=build-stage /healy/.env /
-EXPOSE 8000
+EXPOSE 8888
 CMD [ "/api" ]
