@@ -1,7 +1,7 @@
 go 1.21.5
 use (
     ./healy-apigateway
-    ./Patient-service
+    ./patient-service
     ./doctor-service
     ./chat-service
     ./admin-service
