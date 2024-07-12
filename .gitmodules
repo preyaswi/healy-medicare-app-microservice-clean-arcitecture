@@ -1,15 +1,15 @@
-[submodule "services/healy-apigateway"]
-	path = services/healy-apigateway
+[submodule "healy-apigateway"]
+	path = healy-apigateway
 	url = https://github.com/preyaswi/healy-apigateway-service.git
-[submodule "services/Patient-service"]
-	path = services/Patient-service
+[submodule "Patient-service"]
+	path = Patient-service
 	url = https://github.com/preyaswi/healy-patient-service.git
-[submodule "services/doctor-service"]
-	path = services/doctor-service
+[submodule "doctor-service"]
+	path = doctor-service
 	url = https://github.com/preyaswi/healy-doctor-service.git
-[submodule "services/chat-service"]
-	path = services/chat-service
+[submodule "chat-service"]
+	path = chat-service
 	url = https://github.com/preyaswi/healy-chat-service.git
-[submodule "services/admin-service"]
-	path = services/admin-service
+[submodule "admin-service"]
+	path = admin-service
 	url = https://github.com/preyaswi/healy-admin-service.git

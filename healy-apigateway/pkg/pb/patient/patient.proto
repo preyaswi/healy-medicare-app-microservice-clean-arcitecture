@@ -1,0 +1,63 @@
+syntax="proto3";
+
+package patient;
+option go_package="./pkg/pb/patient";
+service Patient{
+	rpc GoogleSignIn(GoogleSignInRequest) returns (PatientSignUpResponse){};
+	rpc IndPatientDetails(idreq)returns(PatientDetails){};
+	rpc UpdatePatientDetails(PatientDetails)returns(PatientDetails){};
+
+    rpc ListPatients(req)returns(listpares){};
+
+
+}
+message GoogleSignInRequest{
+	string google_id = 1;
+    string email = 2;
+    string name = 3;
+	string AccessToken=4;
+	string RefreshToken=5;
+	string tokenexpiry=6;
+}
+message GoogleSignInResponse{
+string id=1;
+string google_id=2;
+string fullname=3;
+string email=4;
+}
+message PatientSignUpRequest{
+	string fullname=1;
+	string email=2;
+	string password=3;
+	string confirmpassword=4;
+	string gender=5;
+	string contactnumber=6;
+}
+message PatientDetails {
+	string id=1;
+    string fullname=2;
+    string email=3;
+	string gender=4;
+    string contactnumber=5;
+}
+message PatientSignUpResponse {
+	GoogleSignInResponse PatientDetails =1;
+	string AccessToken=2; 
+	string RefreshToken =3;
+}
+message PatientLoginRequest{
+	string Email=1;
+	string password=2;
+}
+message PatientLoginResponse{
+	PatientDetails  PatientDetails=1;
+	string AccessToken=2; 
+	string RefreshToken =3;
+}
+message idreq{
+	string user_id=1;
+}
+message listpares{
+	repeated PatientDetails pa=1;
+}
+message req{}

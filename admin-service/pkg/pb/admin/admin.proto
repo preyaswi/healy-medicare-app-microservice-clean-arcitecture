@@ -1,0 +1,161 @@
+syntax = "proto3";
+
+package admin;
+
+option go_package = "./pkg/pb/admin";
+
+service Admin{
+    rpc AdminSignup(AdminSignupRequest) returns(AdminSignupResponse){};
+    rpc AdminLogin(AdminLoginInRequest) returns (AdminLoginResponse){};
+
+    rpc AddTobookings(bookingreq)returns(bookingres){};
+    rpc CancelBookings(canbookingreq)returns(bookingres){};
+
+    rpc MakePaymentRazorpay(paymentReq)returns (paymentRes){};
+    rpc VerifyPayment(paymentReq)returns(verifyres) {};
+
+    rpc GetPaidPatients(GetPaidPatientsRequest)returns(GetPaidPatientsResponse){};
+    rpc CreatePrescription(CreatePrescriptionRequest) returns (CreatePrescriptionResponse);
+
+    rpc SetDoctorAvailability(SetDoctorAvailabilityRequest) returns (SetDoctorAvailabilityResponse);
+    rpc GetDoctorAvailability(GetDoctorAvailabilityRequest)returns (GetDoctorAvailabilityResponse);
+
+    rpc BookSlot(BookSlotreq)returns(BookSlotres);
+    rpc BookDoctor(BookDoctorreq)returns(paymentRes);
+    rpc VerifyandCalenderCreation(VerifyPaymentandcalenderreq)returns(VerifyPaymentandcalenderres){};
+
+    
+    
+}
+message AdminSignupRequest{
+    string firstname=1;
+    string lastname=2;
+    string email=3;
+    string password=4;
+}
+
+message AdminSignupResponse{
+    int64 status=1;
+    AdminDetails adminDetails=2;
+    string token=3;
+}
+
+message AdminDetails{
+    uint64 id=1;
+    string firstname=2;
+    string lastname=3;
+    string email=4;
+}
+message AdminLoginInRequest{
+    string email=1;
+    string password=2;
+}
+message AdminLoginResponse{
+    int64 status=1;
+    AdminDetails adminDetails=2;
+    string token=3;
+}
+message bookingreq{
+   string patient_id=1;
+   int32 doctor_id=2;
+}
+message canbookingreq{
+    string patient_id=1;
+   int32 booking_id=2;
+}
+message bookingres{}
+message paymentReq{
+ uint32 booking_id=1;
+}
+message PaymentDetails {
+  uint32 booking_id =1;
+  string patient_name = 2;
+  uint32 doctor_id = 3;
+  string doctor_name=4;
+  string doctor_email=5;
+  uint64 fees = 6;
+  string payment_status = 7;
+}
+message paymentRes {
+  PaymentDetails payment_details = 1;
+  string razorid = 2;
+}
+message verifyres{}
+
+message GetPaidPatientsRequest {
+  int32 doctor_id = 1;
+}
+message Patient {
+  uint32 id = 1;
+  string fullname = 2;
+  string email = 3;
+  string gender = 4;
+  string contactnumber = 5;
+}
+message BookedPatient {
+    uint32 booking_id = 1;
+    uint32 slot_id=2;
+    string payment_status=3;
+    Patient patient_detail = 4;
+}
+message GetPaidPatientsResponse {
+  repeated BookedPatient booked_patients = 1;
+}
+message CreatePrescriptionRequest {
+    uint32 booking_id = 1;
+    uint32 doctor_id = 2;
+    string medicine = 3;
+    string dosage = 4;
+    string notes = 5;
+}
+
+message CreatePrescriptionResponse {
+    uint32 id = 1;
+    uint32 booking_id = 2;
+    uint32 doctor_id = 3;
+    string patient_id = 4;
+    string medicine = 5;
+    string dosage = 6;
+    string notes = 7;
+}
+
+message SetDoctorAvailabilityRequest {
+    uint32 doctor_id = 1;
+    string date = 2; // e.g., "2024-06-20"
+    string start_time = 3; // e.g., "09:00"
+    string end_time = 4; // e.g., "17:00"
+}
+
+message SetDoctorAvailabilityResponse {
+    string status = 1;
+}
+message GetDoctorAvailabilityRequest {
+    uint32 doctor_id = 1;
+    string date = 2; // e.g., "2024-06-20"
+}
+
+message Slot {
+    uint32 slot_id = 1;
+    string time = 2; // e.g., "09:00-09:30"
+    bool is_booked = 3;
+}
+
+message GetDoctorAvailabilityResponse {
+    repeated Slot slots = 1;
+}
+message BookSlotreq{
+ uint32 booking_id=1;
+ string patient_id=2;
+ uint32 slot_id=3;
+}
+message BookSlotres{}
+message BookDoctorreq{
+    string patient_id=1;
+    uint32 slot_id=2;
+}
+message VerifyPaymentandcalenderreq{
+    uint32 booking_id=1;
+    string payment_id=2;
+    string razor_id=3;
+}
+message VerifyPaymentandcalenderres{}

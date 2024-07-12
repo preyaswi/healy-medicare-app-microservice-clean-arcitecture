@@ -1,0 +1,838 @@
+definitions:
+  models.AdminLogin:
+    properties:
+      email:
+        type: string
+      password:
+        maxLength: 20
+        minLength: 6
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  models.AdminSignUp:
+    properties:
+      email:
+        type: string
+      firstname:
+        type: string
+      lastname:
+        type: string
+      password:
+        maxLength: 20
+        minLength: 6
+        type: string
+    required:
+    - email
+    - firstname
+    - lastname
+    - password
+    type: object
+  models.DoctorDetails:
+    properties:
+      email:
+        type: string
+      fees:
+        type: integer
+      fullName:
+        type: string
+      phoneNumber:
+        type: string
+      specialization:
+        type: string
+      yearsOfExperience:
+        type: integer
+    type: object
+  models.DoctorLogin:
+    description: Doctor login details
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  models.DoctorSignUp:
+    description: Doctor sign up details
+    properties:
+      confirm_password:
+        maxLength: 20
+        minLength: 6
+        type: string
+      email:
+        type: string
+      fees:
+        minimum: 3
+        type: integer
+      full_name:
+        maxLength: 50
+        minLength: 3
+        type: string
+      license_number:
+        maxLength: 20
+        minLength: 6
+        type: string
+      password:
+        maxLength: 20
+        minLength: 6
+        type: string
+      phone_number:
+        maxLength: 15
+        minLength: 10
+        type: string
+      specialization:
+        type: string
+      years_of_experience:
+        maximum: 50
+        minimum: 0
+        type: integer
+    required:
+    - confirm_password
+    - email
+    - fees
+    - full_name
+    - license_number
+    - password
+    - phone_number
+    - specialization
+    - years_of_experience
+    type: object
+  models.GoogleUserInfo:
+    properties:
+      accesstoken:
+        type: string
+      email:
+        type: string
+      id:
+        description: Google's unique user ID
+        type: string
+      name:
+        type: string
+      refreshtoken:
+        type: string
+      tokenexpiry:
+        type: string
+    type: object
+  models.PatientDetails:
+    properties:
+      contactnumber:
+        description: |-
+          The contact number of the patient
+          example: +1234567890
+        type: string
+      email:
+        description: |-
+          The email address of the patient
+          example: john.doe@example.com
+        type: string
+      fullname:
+        description: |-
+          The full name of the patient
+          example: John Doe
+        type: string
+      gender:
+        description: |-
+          The gender of the patient
+          example: male
+        type: string
+    type: object
+  models.PrescriptionRequest:
+    description: Prescription request details
+    properties:
+      booking_id:
+        type: integer
+      doctor_id:
+        type: integer
+      dosage:
+        type: string
+      medicine:
+        type: string
+      notes:
+        type: string
+    type: object
+  models.Rate:
+    properties:
+      rate:
+        maximum: 5
+        minimum: 0
+        type: integer
+    required:
+    - rate
+    type: object
+  models.SetAvailability:
+    description: Set availability details
+    properties:
+      date:
+        description: e.g., "2024-06-20"
+        type: string
+      endtime:
+        description: e.g., "17:00"
+        type: string
+      starttime:
+        description: e.g., "09:00"
+        type: string
+    type: object
+  response.Response:
+    properties:
+      data:
+        description: |-
+          The response data
+          example: {"key": "value"}
+      error:
+        description: |-
+          The error information, if any
+          example: "Error description"
+      message:
+        description: |-
+          The response message
+          example: "Request was successful"
+        type: string
+    type: object
+info:
+  contact:
+    email: support@healy-medicare.com
+    name: API Support
+  description: This is the API documentation for the Healy Medicare application.
+  title: Healy Medicare API
+  version: 1.0.0
+paths:
+  /admin/dashboard/doctors:
+    get:
+      consumes:
+      - application/json
+      description: |-
+        List all doctors
+        Retrieve the details of all doctors
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      - Bearer: []
+      summary: Get all doctors' details
+      tags:
+      - Admin
+      - Patient
+  /admin/dashboard/patients:
+    get:
+      description: List all patients
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: List Patients
+      tags:
+      - Admin
+  /admin/login:
+    post:
+      description: Admin Login endpoint
+      parameters:
+      - description: Admin Login
+        in: body
+        name: admin
+        required: true
+        schema:
+          $ref: '#/definitions/models.AdminLogin'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Admin Login
+      tags:
+      - Admin
+  /admin/signup:
+    post:
+      description: Admin SignUp endpoint
+      parameters:
+      - description: Admin SignUp
+        in: body
+        name: admin
+        required: true
+        schema:
+          $ref: '#/definitions/models.AdminSignUp'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Admin SignUp
+      tags:
+      - Admin
+  /chat:
+    get:
+      description: Establish WebSocket connection for chat
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - Bearer: []
+      summary: WebSocket connection for chat messages
+      tags:
+      - Chat
+  /chat/messages:
+    get:
+      description: Retrieve chat messages
+      parameters:
+      - description: FriendID
+        in: query
+        name: FriendID
+        required: true
+        type: string
+      - description: Offset
+        in: query
+        name: Offset
+        required: true
+        type: string
+      - description: Limit
+        in: query
+        name: Limit
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: Get Chat Messages
+      tags:
+      - Chat
+  /doctor/login:
+    post:
+      consumes:
+      - application/json
+      description: Log in an existing doctor
+      parameters:
+      - description: Doctor Login Details
+        in: body
+        name: login
+        required: true
+        schema:
+          $ref: '#/definitions/models.DoctorLogin'
+      - description: Doctor Login Details
+        in: body
+        name: login
+        required: true
+        schema:
+          $ref: '#/definitions/models.DoctorLogin'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Doctor Login
+      tags:
+      - Doctor
+  /doctor/patient:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve booked patients for the doctor
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: Get Booked Patients
+      tags:
+      - Doctor
+  /doctor/patient/prescription:
+    post:
+      consumes:
+      - application/json
+      description: Create a prescription for a patient
+      parameters:
+      - description: Prescription Details
+        in: body
+        name: prescription
+        required: true
+        schema:
+          $ref: '#/definitions/models.PrescriptionRequest'
+      - description: Booking ID
+        in: query
+        name: booking_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: Create Prescription
+      tags:
+      - Doctor
+  /doctor/profile:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve doctor profile
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: Get Doctor Profile
+      tags:
+      - Doctor
+    put:
+      consumes:
+      - application/json
+      description: Update doctor profile
+      parameters:
+      - description: Doctor Details
+        in: body
+        name: profile
+        required: true
+        schema:
+          $ref: '#/definitions/models.DoctorDetails'
+      - description: Doctor Details
+        in: body
+        name: profile
+        required: true
+        schema:
+          $ref: '#/definitions/models.DoctorDetails'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: Update Doctor Profile
+      tags:
+      - Doctor
+  /doctor/profile/availability:
+    post:
+      consumes:
+      - application/json
+      description: Set availability for the doctor
+      parameters:
+      - description: Availability Details
+        in: body
+        name: availability
+        required: true
+        schema:
+          $ref: '#/definitions/models.SetAvailability'
+      - description: Availability Details
+        in: body
+        name: availability
+        required: true
+        schema:
+          $ref: '#/definitions/models.SetAvailability'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: Set Doctor Availability
+      tags:
+      - Doctor
+  /doctor/signup:
+    post:
+      consumes:
+      - application/json
+      description: Sign up a new doctor
+      parameters:
+      - description: Doctor Sign Up Details
+        in: body
+        name: doctor
+        required: true
+        schema:
+          $ref: '#/definitions/models.DoctorSignUp'
+      - description: Doctor Sign Up Details
+        in: body
+        name: doctor
+        required: true
+        schema:
+          $ref: '#/definitions/models.DoctorSignUp'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Doctor Sign Up
+      tags:
+      - Doctor
+  /google/redirect:
+    get:
+      consumes:
+      - application/json
+      description: Handles the callback from Google OAuth2 login
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.GoogleUserInfo'
+        "400":
+          description: No code in query parameters
+          schema:
+            type: string
+        "500":
+          description: Failed to exchange token
+          schema:
+            type: string
+      security:
+      - None: []
+      summary: Handle Google OAuth2 callback //redirect from google login
+      tags:
+      - Patients
+  /patient/bookdoctor:
+    get:
+      consumes:
+      - application/json
+      description: Book a doctor for a specific slot,//user browser
+      parameters:
+      - description: Slot ID
+        in: query
+        name: slot_id
+        required: true
+        type: integer
+      - description: Patient ID
+        in: query
+        name: patient_id
+        required: true
+        type: string
+      produces:
+      - text/html
+      responses:
+        "200":
+          description: HTML page for payment
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Book a doctor
+      tags:
+      - Patient
+  /patient/doctor:
+    get:
+      consumes:
+      - application/json
+      description: |-
+        List all doctors
+        Retrieve the details of all doctors
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      - Bearer: []
+      summary: Get all doctors' details
+      tags:
+      - Admin
+      - Patient
+  /patient/doctor/{doctor_id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the details of a specific doctor by ID
+      parameters:
+      - description: Doctor ID
+        in: path
+        name: doctor_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: Get individual doctor's details
+      tags:
+      - Patient
+  /patient/doctor/availability:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the available slots for a doctor on a given date
+      parameters:
+      - description: Doctor ID
+        in: query
+        name: doctor_id
+        required: true
+        type: integer
+      - description: Date in YYYY-MM-DD format
+        in: query
+        name: date
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: Get doctor's slot availability
+      tags:
+      - Patient
+  /patient/doctor/rate/{doctor_id}:
+    post:
+      consumes:
+      - application/json
+      description: Rate a specific doctor
+      parameters:
+      - description: Doctor ID
+        in: path
+        name: doctor_id
+        required: true
+        type: string
+      - description: Rate
+        in: body
+        name: rate
+        required: true
+        schema:
+          $ref: '#/definitions/models.Rate'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: Rate a doctor
+      tags:
+      - Patient
+  /patient/login:
+    get:
+      consumes:
+      - application/json
+      description: Redirects the user to Google's OAuth2 login page
+      produces:
+      - application/json
+      responses:
+        "302":
+          description: Redirecting to Google login
+          schema:
+            type: string
+      security:
+      - None: []
+      summary: Redirect to Google OAuth2 login //use browser
+      tags:
+      - Patients
+  /patient/profile:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve details of a specific patient
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: Get patient details
+      tags:
+      - Patient Profile
+    put:
+      consumes:
+      - application/json
+      description: Update the details of a patient
+      parameters:
+      - description: Patient details to update
+        in: body
+        name: patientDetails
+        required: true
+        schema:
+          $ref: '#/definitions/models.PatientDetails'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: Update patient details
+      tags:
+      - Patient Profile
+  /payment_success:
+    get:
+      consumes:
+      - application/json
+      description: Verify the payment and create a calendar entry for the booking
+      parameters:
+      - description: Booking ID
+        in: query
+        name: booking_id
+        required: true
+        type: integer
+      - description: Payment ID
+        in: query
+        name: payment_id
+        required: true
+        type: string
+      - description: Razor ID
+        in: query
+        name: razor_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Verify payment and create calendar entry  //redirect from book doctor
+      tags:
+      - Patient
+securityDefinitions:
+  Bearer:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

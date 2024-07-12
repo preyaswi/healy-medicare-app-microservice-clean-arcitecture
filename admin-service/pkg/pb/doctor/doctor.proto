@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package doctor;
+
+option go_package = "./pkg/pb/doctor";
+
+service Doctor{
+   rpc Checkdoctor(doctorreq)returns(doctorres){};
+   rpc DoctorDetailforBooking(doctorreq)returns(bookingres){};
+}
+message doctorreq{
+    int32 doctor_id=1;
+}
+message doctorres{
+    bool bool=1;
+    string Error=2;
+}
+message bookingres{
+   int32 doctor_id=1;
+    string doctor_name=2;
+   string doctor_email=3;
+   int64 fees=4;
+}
