@@ -46,8 +46,10 @@ func KafkaProducer(message models.Message) error {
 	}
 
 	configs := sarama.NewConfig()
-	configs.Producer.Return.Successes = true
+	configs.Producer.RequiredAcks = sarama.WaitForAll
 	configs.Producer.Retry.Max = 5
+	configs.Producer.Return.Successes = true
+	configs.Producer.Partitioner = sarama.NewRandomPartitioner
 
 	producer, err := sarama.NewSyncProducer([]string{cfg.KafkaPort}, configs)
 	if err != nil {
@@ -61,7 +63,7 @@ func KafkaProducer(message models.Message) error {
 	}
 
 	msg := &sarama.ProducerMessage{
-		Topic: cfg.KafkaTpic,
+		Topic: "CHAT-TOPIC",
 		Key:   sarama.StringEncoder("Friend message"),
 		Value: sarama.StringEncoder(result),
 	}

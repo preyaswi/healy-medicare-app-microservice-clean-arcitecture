@@ -18,7 +18,19 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8888
-
+          env:
+            - name: PORT
+              value: ":8888"
+            - name: KAFKA_PORT
+              value: "kafka:9092"
+            - name: DOCTOR_SVC
+              value: "doctor-srv:8888"
+            - name: PATIENT_SVC
+              value: "patient-srv:8888"
+            - name: ADMIN_SVC
+              value: "admin-srv:8888"
+            - name: CHAT_SVC
+              value: "chat-srv:8888"
 ---
 apiVersion: v1
 kind: Service

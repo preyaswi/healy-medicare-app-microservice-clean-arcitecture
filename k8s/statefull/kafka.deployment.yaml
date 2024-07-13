@@ -6,7 +6,7 @@ metadata:
   name: kafka
 spec:
   serviceName: kafka
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       service: kafka

@@ -18,6 +18,11 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8888
+          env:
+            - name: PORT
+              value: ":8888"
+            - name: KAFKA_PORT
+              value: "kafka:9092"
 
 ---
 apiVersion: v1

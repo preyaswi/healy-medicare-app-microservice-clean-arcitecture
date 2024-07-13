@@ -1,8 +1,8 @@
 [submodule "healy-apigateway"]
 	path = healy-apigateway
 	url = https://github.com/preyaswi/healy-apigateway-service.git
-[submodule "Patient-service"]
-	path = Patient-service
+[submodule "patient-service"]
+	path = patient-service
 	url = https://github.com/preyaswi/healy-patient-service.git
 [submodule "doctor-service"]
 	path = doctor-service

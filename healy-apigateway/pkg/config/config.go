@@ -12,10 +12,9 @@ type Config struct {
 	AdminSvc       string `mapstructure:"ADMIN_SVC"`
 	ChatSvc        string `mapstructure:"CHAT_SVC"`
 	KafkaPort      string `mapstructure:"KAFKA_PORT"`
-	KafkaTpic      string `mapstructure:"KAFKA_TOPIC"`
 }
 
-var envs = []string{"PORT", "YOUR_CLIENT_ID", "YOUR_CLIENT_SECRET", "REDIRECT_URL", "PATIENT_SVC", "DOCTOR_SVC", "ADMIN_SVC", "CHAT_SVC", "KAFKA_PORT", "KAFKA_TOPIC"}
+var envs = []string{"PORT", "YOUR_CLIENT_ID", "YOUR_CLIENT_SECRET", "REDIRECT_URL", "PATIENT_SVC", "DOCTOR_SVC", "ADMIN_SVC", "CHAT_SVC", "KAFKA_PORT"}
 
 func LoadConfig() (Config, error) {
 	var config Config

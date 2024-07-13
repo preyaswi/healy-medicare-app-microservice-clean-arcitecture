@@ -23,7 +23,6 @@ kubectl wait --namespace ingress-nginx \
   --for=condition=ready pod \
   --selector=app.kubernetes.io/component=controller \
   --timeout=120s
-
 ```
 
 then run skaffold or apply k8s deployments

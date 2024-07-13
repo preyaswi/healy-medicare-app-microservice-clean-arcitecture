@@ -10,12 +10,10 @@ type Config struct {
 
 	Port      string `mapstructure:"PORT"`
 	KafkaPort string `mapstructure:"KAFKA_PORT"`
-	KafkaTpic string `mapstructure:"KAFKA_TOPIC"`
 }
 
 var envs = []string{
-	"DB_URL", "DB_NAME", "PORT", "KAFKA_PORT", "KAFKA_TOPIC",
-}
+	"DB_URL", "DB_NAME", "PORT", "KAFKA_PORT"}
 
 func LoadConfig() (Config, error) {
 	var config Config
