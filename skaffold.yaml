@@ -29,5 +29,7 @@ build:
 manifests:
   rawYaml:
     - ./k8s/stateless/*
+    - ./k8s/statefull/*
+    - ./k8s/ingress/local-ingress.yaml
 deploy:
   kubectl: {}
