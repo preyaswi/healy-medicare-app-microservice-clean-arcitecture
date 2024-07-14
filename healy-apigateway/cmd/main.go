@@ -12,7 +12,7 @@ import (
 // @version 1.0.0
 // @description This is the API documentation for the Healy Medicare application.
 // @contact.name API Support
-// @contact.email support@healy-medicare.com
+// @contact.email support@preyaswi.online
 // @securityDefinitions.apikey Bearer
 // @in header
 // @name Authorization
@@ -26,7 +26,7 @@ func main() {
 	docs.SwaggerInfo.Title = "Healy Medicare API"
 	docs.SwaggerInfo.Description = "This is the API documentation for the Healy Medicare application."
 	docs.SwaggerInfo.Version = "1.0.0"
-    docs.SwaggerInfo.Host = "test.local"
+    docs.SwaggerInfo.Host = "preyaswi.online"
 	docs.SwaggerInfo.BasePath = "/"
 	docs.SwaggerInfo.Schemes = []string{"http", "https"}
 	server, diErr := di.InitializeApi(cfg)
