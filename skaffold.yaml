@@ -28,6 +28,6 @@ build:
     push: true
 manifests:
   rawYaml:
-    - ./k8s/*
+    - ./k8s/stateless/*
 deploy:
   kubectl: {}
