@@ -5,7 +5,7 @@ metadata:
 spec:
   secretName: healy-tls
   dnsNames:
-  - ajay404.online
+  - preyaswi.online
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer

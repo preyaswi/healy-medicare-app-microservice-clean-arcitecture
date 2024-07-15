@@ -6,10 +6,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - ajay404.online
+    - preyaswi.online
     secretName: healy-tls
   rules:
-  - host: ajay404.online
+  - host: preyaswi.online
     http:
       paths:
       - path: /
