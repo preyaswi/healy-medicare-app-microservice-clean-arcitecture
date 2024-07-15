@@ -6,6 +6,7 @@ import (
 	"healy-admin/pkg/config"
 	papb "healy-admin/pkg/pb/doctor"
 	"healy-admin/pkg/utils/models"
+	"time"
 
 	"google.golang.org/grpc"
 )
@@ -15,7 +16,9 @@ type doctorClient struct {
 }
 
 func NewdoctorClient(cfg *config.Config) *doctorClient {
-	cc, err := grpc.Dial(cfg.DOCTOR_SVC, grpc.WithInsecure())
+	fmt.Println("Connecting to doctor:", cfg.DOCTOR_SVC)
+
+	cc, err := grpc.Dial("doctor-srv:8888", grpc.WithInsecure(), grpc.WithTimeout(5*time.Second))
 	if err != nil {
 		fmt.Println("Could not connect:", err)
 	}
@@ -38,7 +41,10 @@ func (c *doctorClient) CheckDoctor(doctorid int) (bool, error) {
 }
 
 func (c *doctorClient) DoctorDetailforBooking(doctorid int) (models.BookingDoctorDetails, error) {
+	fmt.Println("Docter details client bookingDetails")
 	res, err := c.Client.DoctorDetailforBooking(context.Background(), &papb.Doctorreq{DoctorId: int32(doctorid)})
+	fmt.Println("Docter details client bookingDetails received", res)
+
 	if err != nil {
 		return models.BookingDoctorDetails{}, err
 	}

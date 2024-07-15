@@ -18,9 +18,6 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8888
-          env:
-            - name: PORT
-              value: ":8888"
 
 ---
 apiVersion: v1

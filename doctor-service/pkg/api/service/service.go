@@ -5,6 +5,7 @@ import (
 	"doctor-service/pkg/models"
 	"doctor-service/pkg/pb"
 	usecaseint "doctor-service/pkg/usecase/interface"
+	"fmt"
 )
 
 type DoctorServer struct {
@@ -183,7 +184,10 @@ func (d *DoctorServer) Checkdoctor(ctx context.Context, req *pb.Doctorreq) (*pb.
 	}, nil
 }
 func (d *DoctorServer) DoctorDetailforBooking(ctx context.Context, req *pb.Doctorreq) (*pb.Bookingres, error) {
+	fmt.Println("Reached to doctor service")
 	doctordetail, err := d.doctorUseCase.DoctorDetailforBooking(int(req.DoctorId))
+	fmt.Println("res recieved to doctor service doctor details")
+
 	if err != nil {
 		return &pb.Bookingres{}, err
 	}

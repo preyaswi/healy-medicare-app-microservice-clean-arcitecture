@@ -297,8 +297,9 @@ func (ad *adminUseCase) BookDoctor(patientid string, slotid int) (domain.Booking
 	if err != nil {
 		return domain.Booking{}, "", err
 	}
+	fmt.Println("Reached admin service usecase")
 	doctordetail, err := ad.doctorRepository.DoctorDetailforBooking(doctorid)
-	fmt.Println(doctordetail, "this is the doctor details")
+	fmt.Println(doctordetail, "doctor details successfully recieved")
 	if err != nil {
 		return domain.Booking{}, "", err
 	}

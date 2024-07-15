@@ -25,6 +25,9 @@ FROM gcr.io/distroless/static-debian11
 # Copy the binary from the build stage
 COPY --from=build-stage /app/api /api
 
+# Copy the template
+COPY --from=build-stage /app/template/ /template
+
 # Copy the .env file (consider using environment variables instead)
 COPY --from=build-stage /app/.env /.env
 

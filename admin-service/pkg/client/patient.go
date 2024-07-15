@@ -15,6 +15,8 @@ type patientClient struct {
 }
 
 func NewPatientClient(cfg *config.Config) *patientClient {
+	fmt.Println("Connecting to patient:", cfg.PATIENT_SVC)
+
 	cc, err := grpc.Dial(cfg.PATIENT_SVC, grpc.WithInsecure())
 	if err != nil {
 		fmt.Println("Could not connect:", err)
