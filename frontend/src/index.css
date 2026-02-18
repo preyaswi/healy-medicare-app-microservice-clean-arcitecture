@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base ──────────────────────────────────────────── */
+body {
+  @apply bg-white text-brand-black antialiased font-sans;
+}
+
+/* ─── Typography ────────────────────────────────────── */
+h1, h2, h3 {
+  @apply font-handwritten;
+}
+
+/* ─── Component Classes ─────────────────────────────── */
+@layer components {
+
+  /* Buttons */
+  .btn-dark {
+    @apply bg-brand-black text-white px-8 py-3 rounded-full font-handwritten text-base
+           hover:bg-gray-800 transition-colors duration-200
+           focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-blue {
+    @apply bg-brand-blue text-white px-8 py-2.5 rounded-lg font-handwritten text-base
+           hover:bg-brand-blue-dark transition-colors duration-200
+           focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-brand-black px-8 py-2.5 rounded-full font-handwritten text-base
+           border-2 border-brand-black hover:bg-brand-black hover:text-white
+           transition-colors duration-200 focus:outline-none;
+  }
+
+  /* Inputs */
+  .input-field {
+    @apply w-full px-4 py-3 bg-white rounded-xl border-none outline-none
+           text-sm font-sans text-gray-800 placeholder-gray-400
+           transition-colors duration-200;
+  }
+
+  .input-underline {
+    @apply w-full px-3 py-2.5 bg-white border-b-2 border-gray-200 rounded-none
+           text-sm font-sans text-gray-800 placeholder-gray-400
+           focus:outline-none focus:border-brand-black transition-colors duration-200;
+  }
+
+  /* Cards */
+  .card-yellow {
+    @apply bg-brand-yellow rounded-3xl p-6 shadow-sm;
+  }
+
+  .card-gray {
+    @apply bg-brand-gray-light rounded-3xl p-6;
+  }
+
+  .card {
+    @apply bg-white rounded-3xl shadow-sm border border-gray-100 p-6;
+  }
+
+  /* Labels */
+  .form-label {
+    @apply block font-handwritten text-base text-gray-700 mb-1.5;
+  }
+
+  /* Brand */
+  .brand-name {
+    @apply font-cursive text-brand-blue font-bold italic;
+  }
+
+  .page-title {
+    @apply font-handwritten font-bold text-brand-black;
+  }
+
+  /* Page header pattern */
+  .page-header {
+    @apply flex items-center justify-between mb-8;
+  }
+}

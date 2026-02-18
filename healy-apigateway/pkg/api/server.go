@@ -25,11 +25,10 @@ func NewServerHTTP(patientHandler *handler.PatientHandler, doctorHandler *handle
 	route.Use(logger.New())
 
 	route.Use(cors.New(cors.Config{
-        AllowOrigins: "*",
-        AllowMethods: "GET,POST,HEAD,PUT,DELETE,PATCH",
-        AllowHeaders: "Origin, Content-Type, Accept",
-    }))
-
+		AllowOrigins: "*",
+		AllowMethods: "GET,POST,HEAD,PUT,DELETE,PATCH",
+		AllowHeaders: "Origin, Content-Type, Accept",
+	}))
 
 	DoctorRoutes(route, doctorHandler, patientHandler, bookingHandler)
 	PatientRoutes(route, patientHandler, doctorHandler, adminHandler, bookingHandler)
@@ -41,7 +40,7 @@ func NewServerHTTP(patientHandler *handler.PatientHandler, doctorHandler *handle
 }
 func (s *ServerHTTP) Start(cfg config.Config) {
 
-	log.Printf("starting server on :8000")
+	log.Printf("starting server on :", cfg.Port)
 	err := s.engine.Listen(cfg.Port)
 	if err != nil {
 		log.Fatalf("error while starting the server: %v", err)

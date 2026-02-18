@@ -1,0 +1,38 @@
+{
+    "model": "opus",
+    "permissions": {
+    "allow": [
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      
+      "Bash(go test *)",
+      "Bash(go run *)",
+      "Bash(go build *)",
+      "Bash(go mod tidy)",
+      "Bash(go fmt *)",
+      "Bash(go vet *)",
+      
+      "Bash(docker-compose *)",
+      "Bash(kubectl *)",
+      "Bash(helm *)",
+      "Bash(skaffold *)",
+      
+      "Bash(gh --version)",
+      "Bash(gh auth status)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr comment:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(gh api *)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Bash(curl:*)",
+      "Bash(wget:*)"
+    ]
+  }
+}
