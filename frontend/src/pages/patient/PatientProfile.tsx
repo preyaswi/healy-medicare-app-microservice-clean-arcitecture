@@ -61,13 +61,13 @@ export default function PatientProfile() {
         <div className="w-20 h-20 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center mx-auto mb-2">
           <User className="h-10 w-10 text-gray-400" />
         </div>
-        <p className="font-handwritten text-lg italic">{profile.fullname || 'patient-name'}</p>
+        <p className="font-sans text-lg italic">{profile.fullname || 'patient-name'}</p>
 
         <div className="text-left mt-6 space-y-3">
           {fields.map(({ key, label }) => (
             <div key={key} className="flex items-center justify-between gap-4">
               <div className="flex-1">
-                <span className="font-handwritten font-bold text-base">{label}:</span>
+                <span className="font-sans font-bold text-base">{label}:</span>
                 {editing[key] ? (
                   <input
                     type="text"
@@ -101,14 +101,14 @@ export default function PatientProfile() {
                 <User className="h-7 w-7 text-gray-400" />
               </div>
               <div className="flex-1">
-                <p className="font-handwritten font-bold text-base">give review:</p>
+                <p className="font-sans font-bold text-base">give review:</p>
                 <div className="flex gap-0.5 my-1">
                   {[1, 2, 3, 4, 5].map((s) => (
                     <Star key={s} className="h-4 w-4 text-yellow-400" fill="currentColor" />
                   ))}
                 </div>
-                <p className="text-xs text-gray-500 font-handwritten">scheduled on:</p>
-                <p className="font-handwritten italic text-base">{b.DoctorName || 'doctor-name'}</p>
+                <p className="text-xs text-gray-500 font-sans">scheduled on:</p>
+                <p className="font-sans italic text-base">{b.DoctorName || 'doctor-name'}</p>
               </div>
               <div className="flex gap-2">
                 <Link to="/patient/chat" className="btn-dark text-xs py-1.5 px-4">chat</Link>

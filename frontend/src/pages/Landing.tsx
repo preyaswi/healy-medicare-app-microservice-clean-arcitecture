@@ -20,7 +20,7 @@ export default function Landing() {
 
       {/* Who's Here */}
       <div className="text-center mb-12">
-        <h2 className="font-handwritten text-4xl font-bold tracking-wide mb-8 uppercase">
+        <h2 className="font-sans text-4xl font-bold tracking-wide mb-8 uppercase">
           Who's Here?
         </h2>
 

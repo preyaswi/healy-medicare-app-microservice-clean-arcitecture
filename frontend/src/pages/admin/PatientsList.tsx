@@ -43,16 +43,16 @@ export default function PatientsList() {
       </div>
 
       <div className="card-yellow py-8 px-8 space-y-6">
-        <h2 className="font-handwritten text-xl font-bold tracking-wider">PATIENT'S LIST</h2>
+        <h2 className="font-sans text-xl font-bold tracking-wider">PATIENT'S LIST</h2>
 
         {patients.length === 0 ? (
-          <p className="text-gray-500 font-handwritten text-base">No patients registered</p>
+          <p className="text-gray-500 font-sans text-base">No patients registered</p>
         ) : (
           <div className="space-y-4">
             {patients.map((p) => (
               <div key={p.Id} className="bg-white/60 rounded-2xl p-4">
                 <div className="flex items-center justify-between">
-                  <p className="font-handwritten font-bold text-base">{p.Fullname || 'N/A'}</p>
+                  <p className="font-sans font-bold text-base">{p.Fullname || 'N/A'}</p>
                   <button
                     onClick={() => setExpandedId(expandedId === p.Id ? null : p.Id)}
                     className="btn-dark text-xs py-1 px-4"
@@ -62,12 +62,12 @@ export default function PatientsList() {
                 </div>
                 {expandedId === p.Id && (
                   <div className="mt-3 space-y-1">
-                    <p className="font-handwritten text-base tracking-wider indent-4">PATIENT'S DETAILS</p>
+                    <p className="font-sans text-base tracking-wider indent-4">PATIENT'S DETAILS</p>
                     <p className="text-sm text-gray-600 font-sans">Email: {p.Email}</p>
                     <p className="text-sm text-gray-600 font-sans">Gender: {p.Gender}</p>
                     <p className="text-sm text-gray-600 font-sans">Contact: {p.Contactnumber}</p>
                     <button onClick={() => handleBlock(p.Id)}
-                      className="mt-2 font-handwritten text-base tracking-wider text-red-600 hover:underline">
+                      className="mt-2 font-sans text-base tracking-wider text-red-600 hover:underline">
                       DELETE PATIENT
                     </button>
                   </div>

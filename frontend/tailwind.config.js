@@ -16,9 +16,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        cursive: ['"Dancing Script"', 'cursive'],
-        handwritten: ['"Caveat"', 'cursive'],
+        sans: ['Nunito', 'system-ui', 'sans-serif'],
+        brand: ['Quicksand', 'sans-serif'],
       },
       borderRadius: {
         '2xl': '1rem',

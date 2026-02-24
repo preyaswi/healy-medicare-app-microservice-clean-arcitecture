@@ -55,7 +55,7 @@ export default function Sidebar() {
             <Link
               key={item.path}
               to={item.path}
-              className={`flex items-center gap-3 px-4 py-2.5 rounded-full font-handwritten text-base transition-all ${
+              className={`flex items-center gap-3 px-4 py-2.5 rounded-full font-sans text-base transition-all ${
                 isActive
                   ? 'bg-brand-yellow text-brand-black font-bold'
                   : 'text-gray-500 hover:bg-brand-yellow-pale hover:text-brand-black'

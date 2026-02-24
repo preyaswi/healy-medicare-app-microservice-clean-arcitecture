@@ -52,13 +52,13 @@ export default function PatientChat() {
   return (
     <div className="max-w-2xl">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="font-handwritten text-3xl font-bold">chat</h1>
+        <h1 className="font-sans text-3xl font-bold">chat</h1>
         <span className="brand-name text-xl">LifeLink</span>
       </div>
 
       {!connected ? (
         <div className="card-yellow py-8 px-6 text-center">
-          <p className="font-handwritten text-lg mb-4">Start a conversation</p>
+          <p className="font-sans text-lg mb-4">Start a conversation</p>
           <div className="flex gap-3 max-w-sm mx-auto">
             <input type="text" className="flex-1 px-4 py-2.5 bg-white rounded-xl border-none outline-none"
               placeholder="Doctor ID..." value={friendId} onChange={(e) => setFriendId(e.target.value)} />
@@ -70,12 +70,12 @@ export default function PatientChat() {
           <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span className="text-sm font-handwritten">Doctor #{friendId}</span>
+              <span className="text-sm font-sans">Doctor #{friendId}</span>
             </div>
             <button onClick={() => { wsRef.current?.close(); setConnected(false); }} className="text-xs text-red-500">Disconnect</button>
           </div>
           <div className="flex-1 overflow-y-auto p-4 space-y-3">
-            {messages.length === 0 && <p className="text-center text-gray-400 text-sm py-8 font-handwritten">No messages yet</p>}
+            {messages.length === 0 && <p className="text-center text-gray-400 text-sm py-8 font-sans">No messages yet</p>}
             {messages.map((msg, i) => {
               const isMe = msg.sender_id === parseInt(user?.id || '0');
               return (

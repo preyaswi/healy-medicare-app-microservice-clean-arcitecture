@@ -4,7 +4,7 @@ export default function LoadingSpinner({ message = 'loading...' }: { message?: s
   return (
     <div className="flex flex-col items-center justify-center py-12">
       <Loader2 className="h-8 w-8 text-brand-black animate-spin" />
-      <p className="mt-3 text-sm text-gray-500 font-handwritten">{message}</p>
+      <p className="mt-3 text-sm text-gray-500 font-sans">{message}</p>
     </div>
   );
 }

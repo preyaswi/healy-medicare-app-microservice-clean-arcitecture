@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -11,7 +11,7 @@ body {
 
 /* ─── Typography ────────────────────────────────────── */
 h1, h2, h3 {
-  @apply font-handwritten;
+  @apply font-sans font-bold;
 }
 
 /* ─── Component Classes ─────────────────────────────── */
@@ -19,19 +19,19 @@ h1, h2, h3 {
 
   /* Buttons */
   .btn-dark {
-    @apply bg-brand-black text-white px-8 py-3 rounded-full font-handwritten text-base
+    @apply bg-brand-black text-white px-8 py-3 rounded-full font-sans text-base
            hover:bg-gray-800 transition-colors duration-200
            focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .btn-blue {
-    @apply bg-brand-blue text-white px-8 py-2.5 rounded-lg font-handwritten text-base
+    @apply bg-brand-blue text-white px-8 py-2.5 rounded-lg font-sans text-base
            hover:bg-brand-blue-dark transition-colors duration-200
            focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .btn-outline {
-    @apply bg-transparent text-brand-black px-8 py-2.5 rounded-full font-handwritten text-base
+    @apply bg-transparent text-brand-black px-8 py-2.5 rounded-full font-sans text-base
            border-2 border-brand-black hover:bg-brand-black hover:text-white
            transition-colors duration-200 focus:outline-none;
   }
@@ -64,16 +64,16 @@ h1, h2, h3 {
 
   /* Labels */
   .form-label {
-    @apply block font-handwritten text-base text-gray-700 mb-1.5;
+    @apply block font-sans text-base text-gray-700 mb-1.5;
   }
 
   /* Brand */
   .brand-name {
-    @apply font-cursive text-brand-blue font-bold italic;
+    @apply font-brand text-brand-blue font-bold italic;
   }
 
   .page-title {
-    @apply font-handwritten font-bold text-brand-black;
+    @apply font-sans font-bold text-brand-black;
   }
 
   /* Page header pattern */

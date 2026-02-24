@@ -102,7 +102,7 @@ export default function DoctorSignup() {
 
       {/* Bottom links */}
       <div className="mt-6 text-center space-y-2">
-        <p className="font-handwritten text-base text-gray-500">
+        <p className="font-sans text-base text-gray-500">
           Already have an account?{' '}
           <Link to="/doctor/login" className="text-brand-blue font-bold hover:underline">Login here</Link>
         </p>
