@@ -36,16 +36,16 @@ export default function AdminDoctorsList() {
       </div>
 
       <div className="card-yellow py-8 px-8 space-y-6">
-        <h2 className="font-handwritten text-xl font-bold tracking-wider">DOCTOR'S LIST</h2>
+        <h2 className="font-sans text-xl font-bold tracking-wider">DOCTOR'S LIST</h2>
 
         {doctors.length === 0 ? (
-          <p className="text-gray-500 font-handwritten text-base">No doctors registered</p>
+          <p className="text-gray-500 font-sans text-base">No doctors registered</p>
         ) : (
           <div className="space-y-4">
             {doctors.map((doc) => (
               <div key={doc.DoctorDetail.Id} className="bg-white/60 rounded-2xl p-4">
                 <div className="flex items-center justify-between">
-                  <p className="font-handwritten font-bold text-base">Dr. {doc.DoctorDetail.FullName}</p>
+                  <p className="font-sans font-bold text-base">Dr. {doc.DoctorDetail.FullName}</p>
                   <button
                     onClick={() => setExpandedId(expandedId === doc.DoctorDetail.Id ? null : doc.DoctorDetail.Id)}
                     className="btn-dark text-xs py-1 px-4"
@@ -55,14 +55,14 @@ export default function AdminDoctorsList() {
                 </div>
                 {expandedId === doc.DoctorDetail.Id && (
                   <div className="mt-3 space-y-1">
-                    <p className="font-handwritten text-base tracking-wider indent-4">DOCTOR'S DETAILS</p>
+                    <p className="font-sans text-base tracking-wider indent-4">DOCTOR'S DETAILS</p>
                     <p className="text-sm text-gray-600 font-sans">Email: {doc.DoctorDetail.Email}</p>
                     <p className="text-sm text-gray-600 font-sans">Specialization: {doc.DoctorDetail.Specialization}</p>
                     <p className="text-sm text-gray-600 font-sans">Experience: {doc.DoctorDetail.YearsOfExperience} years</p>
                     <p className="text-sm text-gray-600 font-sans">Fee: {doc.DoctorDetail.Fees}</p>
-                    <p className="font-handwritten text-base tracking-wider mt-2">TOTAL LEAVES: —</p>
+                    <p className="font-sans text-base tracking-wider mt-2">TOTAL LEAVES: —</p>
                     <button onClick={() => handleBlock(doc.DoctorDetail.Id)}
-                      className="mt-2 font-handwritten text-base tracking-wider text-red-600 hover:underline">
+                      className="mt-2 font-sans text-base tracking-wider text-red-600 hover:underline">
                       DELETE DOCTOR
                     </button>
                   </div>

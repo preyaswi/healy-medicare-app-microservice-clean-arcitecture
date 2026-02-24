@@ -51,7 +51,7 @@ export default function DoctorDetail() {
   };
 
   if (loading) return <LoadingSpinner />;
-  if (!doctor) return <p className="text-gray-500 font-handwritten text-base">Doctor not found.</p>;
+  if (!doctor) return <p className="text-gray-500 font-sans text-base">Doctor not found.</p>;
 
   return (
     <div className="space-y-6">
@@ -64,19 +64,19 @@ export default function DoctorDetail() {
         <div className="w-24 h-24 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center mx-auto mb-3">
           <User className="h-12 w-12 text-gray-400" />
         </div>
-        <p className="font-handwritten text-lg italic">{doctor.FullName || 'doctor-name'}</p>
+        <p className="font-sans text-lg italic">{doctor.FullName || 'doctor-name'}</p>
         <div className="flex justify-center gap-0.5 my-2">
           {[1, 2, 3, 4, 5].map((i) => (
             <Star key={i} className="h-5 w-5 text-yellow-400" fill="currentColor" />
           ))}
         </div>
-        <p className="font-handwritten text-base font-bold italic mt-2">doctor's details:</p>
+        <p className="font-sans text-base font-bold italic mt-2">doctor's details:</p>
         <div className="mt-4 space-y-2 text-sm font-sans text-gray-700">
           <p>Specialization: {doctor.Specialization}</p>
           <p>Years of Experience: {doctor.YearsOfExperience}</p>
           <p>for 1 hour: {doctor.Fees}</p>
         </div>
-        <p className="font-handwritten text-2xl font-bold mt-6 italic">active</p>
+        <p className="font-sans text-2xl font-bold mt-6 italic">active</p>
 
         <button onClick={() => bookSlot(0)} className="btn-dark text-lg px-10 py-3 mt-4">
           pay online
@@ -85,7 +85,7 @@ export default function DoctorDetail() {
 
       {/* Check Availability */}
       <div className="card-yellow py-8 px-6">
-        <h2 className="font-handwritten text-xl font-bold mb-4">check availability</h2>
+        <h2 className="font-sans text-xl font-bold mb-4">check availability</h2>
         <div className="flex flex-col sm:flex-row gap-3">
           <input type="date" className="input-field flex-1"
             value={date} onChange={(e) => setDate(e.target.value)} min={new Date().toISOString().split('T')[0]} />
@@ -116,7 +116,7 @@ export default function DoctorDetail() {
 
       {/* Rate Doctor */}
       <div className="card-yellow py-6 px-6">
-        <h2 className="font-handwritten text-xl font-bold mb-4">give review:</h2>
+        <h2 className="font-sans text-xl font-bold mb-4">give review:</h2>
         <div className="flex items-center gap-4">
           <div className="flex gap-1">
             {[1, 2, 3, 4, 5].map((val) => (

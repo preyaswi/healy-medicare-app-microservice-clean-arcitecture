@@ -68,7 +68,7 @@ export default function DoctorLogin() {
       </form>
 
       {/* Bottom link */}
-      <div className="mt-6 text-center font-handwritten text-base text-gray-500">
+      <div className="mt-6 text-center font-sans text-base text-gray-500">
         <p>
           Don't have an account?{' '}
           <Link to="/doctor/signup" className="text-brand-blue font-bold hover:underline">Sign up</Link>

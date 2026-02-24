@@ -23,7 +23,7 @@ export default function BookedPatients() {
 
       {patients.length === 0 ? (
         <div className="card-yellow text-center py-12">
-          <p className="text-gray-500 font-handwritten text-lg">No booked patients yet</p>
+          <p className="text-gray-500 font-sans text-lg">No booked patients yet</p>
         </div>
       ) : (
         <div className="space-y-4">
@@ -33,8 +33,8 @@ export default function BookedPatients() {
                 <User className="h-7 w-7 text-gray-400" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-handwritten font-bold text-base">{p.Fullname || 'patient-name'}</p>
-                <p className="text-xs text-gray-600 font-handwritten">patient details:</p>
+                <p className="font-sans font-bold text-base">{p.Fullname || 'patient-name'}</p>
+                <p className="text-xs text-gray-600 font-sans">patient details:</p>
                 <p className="text-xs text-gray-500 font-sans">{p.Email}</p>
                 <p className="text-xs text-gray-500 font-sans">{p.Gender}</p>
               </div>

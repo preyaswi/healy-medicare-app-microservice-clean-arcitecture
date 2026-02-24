@@ -67,7 +67,7 @@ export default function AdminSignup() {
         <button type="submit" disabled={loading} className="btn-blue">
           {loading ? 'creating...' : 'SUBMIT'}
         </button>
-        <p className="text-center font-handwritten text-base text-gray-600">
+        <p className="text-center font-sans text-base text-gray-600">
           Already have an account?{' '}
           <Link to="/admin/login" className="text-brand-blue-dark font-bold hover:underline">Log in</Link>
         </p>

@@ -38,16 +38,16 @@ export default function Navbar() {
                 <Link to={getDashboardLink()} className="p-2 bg-brand-black rounded-full text-white hover:bg-gray-700 transition-colors">
                   <User className="h-5 w-5" />
                 </Link>
-                <button onClick={handleLogout} className="flex items-center gap-1.5 text-gray-500 hover:text-red-600 transition-colors font-handwritten text-base">
+                <button onClick={handleLogout} className="flex items-center gap-1.5 text-gray-500 hover:text-red-600 transition-colors font-sans text-base">
                   <LogOut className="h-4 w-4" />
                 </button>
               </div>
             ) : (
               <div className="flex items-center gap-3">
-                <Link to="/doctor/login" className="font-handwritten text-base text-gray-600 hover:text-brand-black transition-colors">
+                <Link to="/doctor/login" className="font-sans text-base text-gray-600 hover:text-brand-black transition-colors">
                   Doctor
                 </Link>
-                <Link to="/admin/login" className="font-handwritten text-base text-gray-600 hover:text-brand-black transition-colors">
+                <Link to="/admin/login" className="font-sans text-base text-gray-600 hover:text-brand-black transition-colors">
                   Admin
                 </Link>
                 <a href="/api/patient/login" className="btn-dark text-sm py-2 px-5">
@@ -71,20 +71,20 @@ export default function Navbar() {
         <div className="md:hidden bg-white px-4 py-3 space-y-3 border-t border-gray-100">
           {isAuthenticated ? (
             <>
-              <div className="flex items-center gap-2 font-handwritten text-base">
+              <div className="flex items-center gap-2 font-sans text-base">
                 <User className="h-4 w-4" />
                 <span className="font-bold">{user?.name}</span>
                 <span className="text-xs px-2 py-0.5 bg-brand-yellow rounded-full capitalize font-sans">{user?.role}</span>
               </div>
-              <button onClick={handleLogout} className="flex items-center gap-1.5 text-red-600 font-handwritten text-base">
+              <button onClick={handleLogout} className="flex items-center gap-1.5 text-red-600 font-sans text-base">
                 <LogOut className="h-4 w-4" /> Logout
               </button>
             </>
           ) : (
             <>
-              <a href="/api/patient/login" className="block font-handwritten text-base font-bold">Patient Login</a>
-              <Link to="/doctor/login" className="block font-handwritten text-base text-gray-600">Doctor Login</Link>
-              <Link to="/admin/login" className="block font-handwritten text-base text-gray-600">Admin Login</Link>
+              <a href="/api/patient/login" className="block font-sans text-base font-bold">Patient Login</a>
+              <Link to="/doctor/login" className="block font-sans text-base text-gray-600">Doctor Login</Link>
+              <Link to="/admin/login" className="block font-sans text-base text-gray-600">Admin Login</Link>
             </>
           )}
         </div>

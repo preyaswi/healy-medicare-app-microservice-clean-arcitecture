@@ -55,13 +55,13 @@ export default function GoogleCallback() {
           <div className="w-24 h-24 mx-auto mb-6 rounded-full border-4 border-red-500 flex items-center justify-center">
             <XCircle className="h-12 w-12 text-red-500" />
           </div>
-          <h2 className="font-handwritten text-2xl font-bold text-red-400 mb-2">Oops</h2>
-          <p className="text-gray-500 font-handwritten text-base mb-8">
+          <h2 className="font-sans text-2xl font-bold text-red-400 mb-2">Oops</h2>
+          <p className="text-gray-500 font-sans text-base mb-8">
             something went wrong,<br />click try again.
           </p>
           <button
             onClick={() => { window.location.href = '/api/patient/login'; }}
-            className="w-full bg-red-600 text-white py-3.5 rounded-full font-handwritten text-lg hover:bg-red-700 transition-colors"
+            className="w-full bg-red-600 text-white py-3.5 rounded-full font-sans text-lg hover:bg-red-700 transition-colors"
           >
             Try Again
           </button>

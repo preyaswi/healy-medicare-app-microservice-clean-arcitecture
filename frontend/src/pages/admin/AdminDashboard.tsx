@@ -37,7 +37,7 @@ export default function AdminDashboard() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab.toLowerCase())}
-              className={`font-handwritten text-base tracking-wider ${
+              className={`font-sans text-base tracking-wider ${
                 activeTab === tab.toLowerCase() ? 'font-bold text-brand-black' : 'text-gray-500'
               }`}
             >
@@ -49,11 +49,11 @@ export default function AdminDashboard() {
         {/* Counts */}
         <div className="space-y-6">
           <div>
-            <span className="font-handwritten text-xl font-bold tracking-wider">DOCTOR:</span>
+            <span className="font-sans text-xl font-bold tracking-wider">DOCTOR:</span>
             <span className="ml-4 text-xl font-sans">{doctorCount}</span>
           </div>
           <div>
-            <span className="font-handwritten text-xl font-bold tracking-wider">PATIENT:</span>
+            <span className="font-sans text-xl font-bold tracking-wider">PATIENT:</span>
             <span className="ml-4 text-xl font-sans">{patientCount}</span>
           </div>
         </div>

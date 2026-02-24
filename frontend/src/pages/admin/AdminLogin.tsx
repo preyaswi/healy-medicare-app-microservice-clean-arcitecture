@@ -54,7 +54,7 @@ export default function AdminLogin() {
         <button type="submit" disabled={loading} className="btn-blue">
           {loading ? 'signing in...' : 'SUBMIT'}
         </button>
-        <p className="text-center font-handwritten text-base text-gray-600">
+        <p className="text-center font-sans text-base text-gray-600">
           Need an admin account?{' '}
           <Link to="/admin/signup" className="text-brand-blue-dark font-bold hover:underline">Sign up</Link>
         </p>

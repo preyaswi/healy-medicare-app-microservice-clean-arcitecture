@@ -45,7 +45,7 @@ export default function SetAvailability() {
               onChange={(e) => setForm({ ...form, starttime: e.target.value })}
               required />
           </div>
-          <span className="text-gray-400 pt-4 font-handwritten">-</span>
+          <span className="text-gray-400 pt-4 font-sans">-</span>
           <div className="flex-1">
             <label className="form-label text-center text-sm">End</label>
             <input type="time" className="input-field text-center"
@@ -62,7 +62,7 @@ export default function SetAvailability() {
 
       {result && (
         <div className="card-yellow">
-          <h3 className="font-handwritten font-bold text-lg mb-2">Slots Created</h3>
+          <h3 className="font-sans font-bold text-lg mb-2">Slots Created</h3>
           <pre className="text-sm font-sans text-gray-600 bg-white/60 p-3 rounded-xl overflow-auto">
             {JSON.stringify(result, null, 2)}
           </pre>

@@ -45,7 +45,7 @@ export default function PatientLogin() {
       </div>
 
       {/* Bottom links */}
-      <div className="mt-6 text-center font-handwritten text-base text-gray-500">
+      <div className="mt-6 text-center font-sans text-base text-gray-500">
         <p>
           Don't have an account?{' '}
           <Link to="/patient/signup" className="text-brand-blue font-bold hover:underline">
